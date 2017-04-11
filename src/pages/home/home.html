@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Interactive Contacts
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list class="list">
+
+        <form [formGroup]="addContactFormGroup" (ngSubmit)="askAddOurUpdate()" #addContactForm="ngForm">
+
+            <ion-item>
+                <ion-label floating>Name</ion-label>
+                <ion-input formControlName="name" type="text" [class.invalid]="!addContactFormGroup.controls.name.valid && (addContactFormGroup.controls.name.dirty)">
+                </ion-input>
+            </ion-item>
+            <ion-item *ngIf="!addContactFormGroup.controls.name.valid  && (addContactFormGroup.controls.name.dirty)">
+                <p>Please enter a valid name</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Company</ion-label>
+                <ion-input formControlName="company" type="text" [class.invalid]="!addContactFormGroup.controls.company.valid && (addContactFormGroup.controls.company.dirty)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!addContactFormGroup.controls.company.valid  && (addContactFormGroup.controls.company.dirty)">
+                <p>Please enter a valid company name</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input formControlName="email" type="text" [class.invalid]="!addContactFormGroup.controls.email.valid && (addContactFormGroup.controls.email.dirty)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!addContactFormGroup.controls.email.valid  && (addContactFormGroup.controls.email.dirty)">
+                <p>Please enter a valid email address</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Phone Number</ion-label>
+                <ion-input formControlName="phone" type="text" [class.invalid]="!addContactFormGroup.controls.phone.valid && (addContactFormGroup.controls.phone.dirty)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!addContactFormGroup.controls.phone.valid  && (addContactFormGroup.controls.phone.dirty)">
+                <p>Please enter a valid phone number</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Postal Code</ion-label>
+                <ion-input formControlName="postalCode" type="text" [class.invalid]="!addContactFormGroup.controls.postalCode.valid && (addContactFormGroup.controls.postalCode.dirty)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!addContactFormGroup.controls.postalCode.valid  && (addContactFormGroup.controls.postalCode.dirty)">
+                <p>Please enter a valid postal code</p>
+            </ion-item>
+            <br/>
+
+        </form>
+
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-toolbar><button ion-button full color="primary" [disabled]="!addContactForm.form.valid" (click)="addContactForm.ngSubmit.emit()">Add Contact</button>
+    </ion-toolbar>
+</ion-footer>
